@@ -1,0 +1,2 @@
+# No additional packages beyond a working ComfyUI-See-through installation.
+# Install the dependencies from https://github.com/jtydhr88/ComfyUI-See-through

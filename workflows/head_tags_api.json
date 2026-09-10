@@ -1,0 +1,56 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "head.png"
+    }
+  },
+  "2": {
+    "class_type": "SeeThrough_LoadLayerDiffModel",
+    "inputs": {
+      "model": "layerdifforg/seethroughv0.0.2_layerdiff3d",
+      "vae_ckpt": "",
+      "unet_ckpt": "",
+      "quant_mode": "none",
+      "cache_tag_embeds": true,
+      "group_offload": false,
+      "auto_download": false
+    }
+  },
+  "3": {
+    "class_type": "SeeThrough_GenerateHeadTags",
+    "inputs": {
+      "image": [
+        "1",
+        0
+      ],
+      "layerdiff_model": [
+        "2",
+        0
+      ],
+      "tags": "mouth",
+      "seed": 42,
+      "resolution": 1024,
+      "num_inference_steps": 12
+    }
+  },
+  "4": {
+    "class_type": "SeeThrough_SaveRawTags",
+    "inputs": {
+      "layers": [
+        "3",
+        0
+      ],
+      "filename_prefix": "research/face-head-tags"
+    }
+  },
+  "5": {
+    "class_type": "PreviewImage",
+    "inputs": {
+      "images": [
+        "3",
+        1
+      ]
+    }
+  }
+}
